@@ -3,233 +3,134 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Pooja Properties Group</title>
-<meta name="description" content="Pooja Properties Group builds and converts one- and two-family homes in Queens and Long Island.">
+<title>Pooja Properties Group | Queens &amp; Long Island</title>
+<meta name="description" content="Pooja Properties Group is a residential development company in Queens and Long Island. We buy, convert, and build one- and two-family homes. We buy your burdens.">
+<meta name="theme-color" content="#14233a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<style>
-/* Layout: a single column read like a site plan — a bold name block, then labeled "lots" of content separated by survey-style rules. */
-:root {
-  --bg: #f2f3f0;
-  --surface: #e6e9e4;
-  --ink: #18211e;
-  --muted: #56615c;
-  --rule: #c9cfc9;
-  --accent: #2c5a4b;
-  --brick: #9c4630;
-  --font-display: "Bricolage Grotesque", "Arial Narrow", system-ui, sans-serif;
-  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #121816; --surface: #1b2320; --ink: #e8ece8; --muted: #9aa69f;
-    --rule: #2e3833; --accent: #7fbca6; --brick: #d98a6f; color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #121816; --surface: #1b2320; --ink: #e8ece8; --muted: #9aa69f;
-  --rule: #2e3833; --accent: #7fbca6; --brick: #d98a6f; color-scheme: dark;
-}
-* { box-sizing: border-box; }
-body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-.wrap {
-  max-width: 980px; margin: 0 auto;
-  padding-left: max(24px, env(safe-area-inset-left, 0px));
-  padding-right: max(24px, env(safe-area-inset-right, 0px));
-}
-a { color: var(--accent); text-underline-offset: 3px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-
-/* Top bar */
-.top { padding-block: 28px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-.mark { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -0.01em; }
-.mark svg { flex: none; }
-.top a.contact-link { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 2px; }
-
-/* Hero */
-.hero { padding-block: 56px 72px; }
-.eyebrow { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 20px; }
-h1 {
-  font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 7.2vw, 5.4rem);
-  line-height: 0.98; letter-spacing: -0.035em; margin: 0; text-wrap: balance; max-width: 13ch;
-}
-h1 em { font-style: normal; color: var(--accent); }
-.lede { font-size: clamp(1.08rem, 2vw, 1.25rem); color: var(--muted); max-width: 54ch; margin: 28px 0 0; }
-
-/* Sections */
-section.lot { border-top: 1.5px solid var(--ink); padding-block: 40px 56px; display: grid; grid-template-columns: 220px 1fr; gap: 24px 48px; }
-.lot-label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
-.lot-label strong { display: block; color: var(--brick); font-weight: 500; margin-bottom: 4px; }
-.lot-body { min-width: 0; }
-h2 { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 3.2vw, 2.2rem); line-height: 1.12; letter-spacing: -0.02em; margin: 0 0 16px; text-wrap: balance; }
-p { margin: 0 0 14px; max-width: 64ch; }
-
-/* What we build */
-.types { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 24px; border: 1px solid var(--rule); }
-.type { padding: 20px; border-right: 1px solid var(--rule); }
-.type:last-child { border-right: 0; }
-.type .code { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; color: var(--accent); text-transform: uppercase; }
-.type h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; margin: 8px 0 6px; letter-spacing: -0.01em; }
-.type p { font-size: 15px; color: var(--muted); margin: 0; }
-
-/* Experience */
-.case { background: var(--surface); padding: 24px 24px 20px; margin-top: 8px; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 14px; padding: 0; list-style: none; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
-.facts li strong { color: var(--ink); font-weight: 500; }
-.case p { margin-bottom: 6px; }
-.note { font-size: 14px; color: var(--muted); margin-top: 12px; }
-
-/* Looking for */
-.wants { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
-.wants li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--rule); }
-.wants li:first-child { padding-top: 0; }
-.wants .tick { width: 14px; height: 14px; margin-top: 6px; border: 1.5px solid var(--accent); }
-.wants b { font-weight: 600; }
-
-/* Contact */
-.contact-card { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 8px; }
-.email { font-family: var(--font-mono); font-size: clamp(1rem, 2.6vw, 1.3rem); color: var(--ink); background: var(--surface); padding: 12px 16px; user-select: all; overflow-wrap: anywhere; min-width: 0; }
-button.copy {
-  font: 500 14px/1 var(--font-body); color: var(--bg); background: var(--accent);
-  border: 0; padding: 14px 18px; cursor: pointer;
-}
-button.copy:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.status { font-size: 14px; color: var(--muted); min-height: 1.4em; }
-
-footer { border-top: 1px solid var(--rule); padding-block: 24px 40px; font-size: 13px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-
-@media (max-width: 760px) {
-  section.lot { grid-template-columns: 1fr; gap: 12px; padding-block: 32px 44px; }
-  .types { grid-template-columns: 1fr; }
-  .type { border-right: 0; border-bottom: 1px solid var(--rule); }
-  .type:last-child { border-bottom: 0; }
-  .hero { padding-block: 32px 48px; }
-}
-@media (prefers-reduced-motion: no-preference) {
-  .hero h1, .hero .lede { animation: rise 0.7s ease-out both; }
-  .hero .lede { animation-delay: 0.12s; }
-  @keyframes rise { from { transform: translateY(10px); opacity: 0.4; } to { transform: none; opacity: 1; } }
-}
-</style>
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="wrap">
-  <header class="top">
-    <div class="mark">
-      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true">
-        <rect x="1" y="1" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"/>
-        <path d="M7 22V13l8-6 8 6v9" fill="none" stroke="var(--accent)" stroke-width="2.2" stroke-linejoin="miter"/>
-        <path d="M15 22v-6" stroke="var(--accent)" stroke-width="2.2"/>
-      </svg>
-      Pooja Properties Group
-    </div>
-    <a class="contact-link" href="#contact">Contact</a>
-  </header>
 
-  <div class="hero">
-    <p class="eyebrow">Residential development · Queens &amp; Long Island</p>
-    <h1>Better homes on <em>overlooked</em> lots.</h1>
-    <p class="lede">Pooja Properties Group buys, converts, and builds one- and two-family homes in Queens, Nassau, and Suffolk. We focus on houses other buyers pass over: tired one-families with room to grow, conversion candidates, and teardowns.</p>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Pooja Properties Group home">
+      <span class="mono" aria-hidden="true">PPG</span>
+      <span class="brand-name">Pooja Properties Group</span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="bars" aria-hidden="true"></span><span class="label">Menu</span></button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="sell.html">Sell your property</a>
+      <a href="mission.html">Mission</a>
+      <a href="team.html">Team</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-brass" href="offer.html">Get an offer</a>
+    </nav>
   </div>
+</header>
 
-  <section class="lot" aria-labelledby="build-h">
-    <div class="lot-label"><strong>01</strong>What we build</div>
-    <div class="lot-body">
-      <h2 id="build-h">Small residential projects, done carefully.</h2>
-      <p>Every deal runs through the same underwriting model with a 10–15% contingency, so a project still works when something goes wrong.</p>
-      <div class="types">
-        <div class="type">
-          <div class="code">Conversion</div>
-          <h3>One-family to two-family</h3>
-          <p>Adding a legal second unit where zoning allows, with plans filed through the DOB.</p>
-        </div>
-        <div class="type">
-          <div class="code">Renovation</div>
-          <h3>Full gut and resale</h3>
-          <p>Bringing dated homes up to current code and today's buyers.</p>
-        </div>
-        <div class="type">
-          <div class="code">New build</div>
-          <h3>Ground-up homes</h3>
-          <p>Replacing obsolete houses with new one- and two-family homes.</p>
-        </div>
+<main id="main">
+  <section class="hero" aria-labelledby="hero-h">
+    <div class="wrap hero-inner">
+      <p class="kicker" style="color:var(--brass-soft)">Residential development in Queens and Long Island</p>
+      <h1 id="hero-h"><span>Rooted locally.</span><span class="l2">Built to last.</span></h1>
+      <p class="lede">Pooja Properties Group buys, converts, and builds one- and two-family homes in Queens, Nassau, and Suffolk. We look for the houses other buyers pass over and turn them into homes worth living in.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-brass" href="sell.html">Sell your property</a>
+        <a class="btn btn-line" href="team.html">Meet the team</a>
       </div>
     </div>
+    <svg class="street" viewBox="0 0 1440 220" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true" preserveAspectRatio="xMidYMax slice">
+      <!-- Two-family attached rowhouses -->
+      <path class="draw" pathLength="1" d="M40 219V96h150v123M40 96l75-44 75 44M190 219V80h170v139M190 80l85-40 85 40M360 219V100h140v119"/>
+      <path class="draw d2" pathLength="1" d="M360 100h140M380 100V82h100v18M560 219V70h200v149M560 70h200M560 70l100-46 100 46M760 219V104h150v115M760 104l75-40 75 40"/>
+      <path class="draw d3" pathLength="1" d="M970 219V88h180v131M970 88l90-44 90 44M1150 219V110h130v109M1150 110h130M1170 110V94h90v16M1280 219V84h140v135M1280 84l70-38 70 38"/>
+      <g class="win" stroke-width="1.2">
+        <path d="M70 120h30v30H70zM130 120h30v30h-30zM100 180h30v39h-30zM220 104h34v32h-34zM296 104h34v32h-34zM258 172h28v47h-28zM390 124h30v30h-30zM440 124h30v30h-30zM415 180h30v39h-30z"/>
+        <path d="M595 96h40v36h-40zM685 96h40v36h-40zM595 150h40v34h-40zM685 150h40v34h-40zM642 186h36v33h-36zM790 126h30v30h-30zM850 126h30v30h-30zM820 182h30v37h-30z"/>
+        <path d="M1000 112h36v34h-36zM1084 112h36v34h-36zM1042 174h36v45h-36zM1178 132h30v30h-30zM1226 132h30v30h-30zM1200 182h30v37h-30zM1306 108h32v32h-32zM1362 108h32v32h-32zM1334 176h30v43h-30z"/>
+      </g>
+      <path class="ground" d="M0 219.25h1440" stroke-width="1.5"/>
+    </svg>
   </section>
 
-  <section class="lot" aria-labelledby="founder-h">
-    <div class="lot-label"><strong>02</strong>Founder</div>
-    <div class="lot-body">
-      <h2 id="founder-h">Payshel Sharma</h2>
-      <p>Payshel studies Real Estate and Economics at New York University and is based on Long Island. He started Pooja Properties Group to build a development company rooted in the neighborhoods he knows.</p>
-      <div class="case">
-        <ul class="facts">
-          <li><strong>Springfield Gardens, Queens</strong></li>
-          <li>1-family → 2-family</li>
-          <li>~8 bed · 4 bath · full basement</li>
-        </ul>
-        <p>Managed day to day a family-led conversion of a one-family house into a two-family home. Coordinated the general contractor, electrician, and plumber, handled the Department of Buildings process, and saw the project through to a contract of sale.</p>
-      </div>
-      <p class="note">This project was owned and led by family members; Payshel's role was day-to-day project management.</p>
-    </div>
-  </section>
-
-  <section class="lot" aria-labelledby="want-h">
-    <div class="lot-label"><strong>03</strong>What we're looking for</div>
-    <div class="lot-body">
-      <h2 id="want-h">Let's talk if you have one of these.</h2>
-      <ul class="wants">
-        <li><span class="tick" aria-hidden="true"></span><span><b>Properties to buy.</b> One- and two-family homes, teardowns, and lots in Queens and Long Island, especially off-market or estate sales.</span></li>
-        <li><span class="tick" aria-hidden="true"></span><span><b>Trades and consultants.</b> Contractors, architects, engineers, and expediters who want steady residential work.</span></li>
-        <li><span class="tick" aria-hidden="true"></span><span><b>Lenders and partners.</b> Construction lenders and co-investors interested in small Queens and Long Island projects.</span></li>
+  <div class="promises">
+    <div class="wrap">
+      <ul>
+        <li><b>No repairs.</b> Sell as-is.</li>
+        <li><b>No commissions.</b> We buy directly.</li>
+        <li><b>No obligation.</b> Take time to compare.</li>
       </ul>
     </div>
-  </section>
+  </div>
 
-  <section class="lot" id="contact" aria-labelledby="contact-h">
-    <div class="lot-label"><strong>04</strong>Contact</div>
-    <div class="lot-body">
-      <h2 id="contact-h">Email is the best way to reach us.</h2>
-      <div class="contact-card">
-        <a class="email" id="email" href="mailto:payshel@poojapropertiesgroup.com">payshel@poojapropertiesgroup.com</a>
-        <button class="copy" id="copy-btn" type="button">Copy address</button>
+  <section class="section" aria-labelledby="do-h">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="kicker">What we do</p>
+        <h2 id="do-h">Small residential projects, done carefully.</h2>
+        <p class="lede">Every project runs through the same underwriting model, with room built in for surprises, so it still works when something goes wrong.</p>
       </div>
-      <p class="status" id="copy-status" aria-live="polite"></p>
+      <div class="types">
+        <div class="type">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 40V18L22 6l16 12v22M6 40h32M6 26h32"/></svg>
+          <h3>One-family to two-family</h3>
+          <p>Adding a legal second unit where zoning allows, with plans filed through the Department of Buildings.</p>
+        </div>
+        <div class="type">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 40V18L22 6l16 12v22H6z"/><path d="M15 40V28h14v12M30 14l6-6m-3 9 5-1"/></svg>
+          <h3>Full renovation</h3>
+          <p>Bringing dated homes up to current code and up to what today's buyers expect.</p>
+        </div>
+        <div class="type">
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 40h36M10 40V20h24v20M10 20l12-10 12 10M16 26h4v4h-4zM24 26h4v4h-4z" stroke-dasharray="3 2"/></svg>
+          <h3>New construction</h3>
+          <p>Replacing obsolete houses with new one- and two-family homes built to last.</p>
+        </div>
+      </div>
+      <p class="later"><b>Where we're headed:</b> over time, PPG plans to grow into multifamily buildings that we own and manage for the long term.</p>
     </div>
   </section>
 
-  <footer>
-    <span>© 2026 Pooja Properties Group · Queens &amp; Long Island, NY</span>
-    <span>Company in formation.</span>
-  </footer>
-</div>
+  <section class="band" aria-labelledby="band-h">
+    <div class="wrap">
+      <h2 id="band-h">We Buy Your Burdens.</h2>
+      <p>Your burden becomes our next project.</p>
+      <a class="btn btn-brass" href="sell.html">See how selling to PPG works</a>
+    </div>
+  </section>
 
-<script>
-(function () {
-  var btn = document.getElementById('copy-btn');
-  var status = document.getElementById('copy-status');
-  var addr = 'payshel@poojapropertiesgroup.com';
-  btn.addEventListener('click', function () {
-    function fallback() {
-      var el = document.getElementById('email');
-      var r = document.createRange(); r.selectNodeContents(el);
-      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      status.textContent = 'Address selected. Press Ctrl+C or Cmd+C to copy.';
-    }
-    try {
-      navigator.clipboard.writeText(addr).then(function () {
-        status.textContent = 'Copied.';
-      }, fallback);
-    } catch (e) { fallback(); }
-  });
-})();
-</script>
+  <section class="section" aria-labelledby="more-h">
+    <div class="wrap">
+      <div class="section-head"><p class="kicker">Explore</p><h2 id="more-h">Find what you're looking for.</h2></div>
+      <div class="teasers">
+        <a class="teaser" href="offer.html"><h3>Get an offer</h3><p>Tell us about a property you want to sell. It takes about a minute, with no obligation.</p><span class="go">Start here</span></a>
+        <a class="teaser" href="mission.html"><h3>Our mission</h3><p>What we stand for, how we treat sellers, and where PPG is headed.</p><span class="go">Read our mission</span></a>
+        <a class="teaser" href="team.html"><h3>Our team</h3><p>Meet the founder, and see who we're looking to work with.</p><span class="go">Meet the team</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="brand"><span class="mono" aria-hidden="true">PPG</span><span class="brand-name">Pooja Properties Group</span></div>
+      <div class="eho">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 16 18 4l15 12M7 13v19h22V13"/><path d="M12 19h12M12 25h12" stroke-width="2.4"/></svg>
+        <span>Equal Housing<br>Opportunity</span>
+      </div>
+    </div>
+    <div class="disclose">
+      <p>Payshel Sharma is a licensed New York State real estate salesperson. When Pooja Properties Group offers to buy a property, he acts as a principal buying for his own account, not as an agent for the seller.</p>
+      <p>Pooja Properties Group is a company in formation, serving Queens, Nassau, and Suffolk, New York.</p>
+      <p>&copy; 2026 Pooja Properties Group</p>
+    </div>
+  </div>
+</footer>
+
+<div class="pin" id="pin"><a class="btn btn-brass" href="offer.html">Get an offer</a></div>
+<script src="site.js"></script>
 </body>
 </html>
