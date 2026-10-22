@@ -41,7 +41,7 @@
         .then(function (r) {
           if (!r.ok) throw new Error();
           form.reset();
-          st.textContent = 'Sent. We\'ll reach out soon to talk it through.';
+          st.textContent = 'Application received. You\'ll get your offer within 24 hours.';
         })
         .catch(function () {
           st.className = 'status err';
@@ -67,6 +67,13 @@
     }, { threshold: 0.15 });
     [document.getElementById('offer'), document.querySelector('footer'), document.querySelector('.hero'), document.querySelector('.page-hero')].forEach(function (el) { if (el) io.observe(el); });
   }
+
+  // Prefill address from the home page
+  try {
+    var a = new URLSearchParams(location.search).get('address');
+    var fa = document.getElementById('f-address');
+    if (a && fa) { fa.value = a; var nx = document.getElementById('f-type'); if (nx) nx.focus(); }
+  } catch (e) {}
 
   // Mobile menu
   var head = document.querySelector('.site-head'), mb = document.getElementById('menu-btn');
