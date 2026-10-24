@@ -75,6 +75,15 @@
     if (a && fa) { fa.value = a; var nx = document.getElementById('f-type'); if (nx) nx.focus(); }
   } catch (e) {}
 
+  // Team "Learn more" dialogs
+  Array.prototype.forEach.call(document.querySelectorAll('[data-open]'), function (b) {
+    var d = document.getElementById(b.getAttribute('data-open'));
+    if (!d || typeof d.showModal !== 'function') { b.hidden = true; return; }
+    b.addEventListener('click', function () { d.showModal(); });
+    d.addEventListener('click', function (e) { if (e.target === d) d.close(); });
+    d.addEventListener('close', function () { b.focus(); });
+  });
+
   // Mobile menu
   var head = document.querySelector('.site-head'), mb = document.getElementById('menu-btn');
   if (mb) {

@@ -314,3 +314,23 @@ h1.as-h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.12; }
   .member.lead h2 { font-size: 1.5rem; }
   .member.lead .role { font-size: 15px; }
 }
+
+.member .creds { list-style: none; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--rule); font-size: 15px; color: var(--muted); line-height: 1.45; }
+.member .creds li { position: relative; padding-left: 14px; }
+.member .creds li::before { content: ""; position: absolute; left: 0; top: .65em; width: 6px; height: 1.5px; background: var(--brass); }
+.member .creds li:first-child { color: var(--ink); font-weight: 500; }
+.member .mtext { display: flex; flex-direction: column; flex: 1; }
+.more-btn { margin-top: 16px; align-self: flex-start; background: none; border: 0; padding: 4px 0; font: 600 15px/1.2 var(--sans); color: var(--navy); text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 5px; text-decoration-thickness: 1.5px; cursor: pointer; }
+.more-btn:hover { text-decoration-color: var(--navy); }
+.member:not(.lead) .more-btn { margin-top: auto; padding-top: 16px; }
+.bio-modal { width: min(640px, calc(100vw - 32px)); max-height: calc(100vh - 48px); padding: 0; border: 0; border-top: 3px solid var(--brass); border-radius: 2px; background: var(--paper); color: var(--ink); box-shadow: 0 24px 64px rgba(10,18,30,.35); }
+.bio-modal::backdrop { background: rgba(20,35,58,.6); }
+.bm-head { display: flex; gap: 20px; align-items: center; padding: 28px 28px 20px; background: var(--navy); color: var(--on-navy); }
+.bm-head img { width: 80px; height: 100px; object-fit: cover; object-position: 50% 30%; flex: none; border-bottom: 2px solid var(--brass); }
+.bm-head h2 { font-size: 1.6rem; }
+.bm-head .role { margin: 6px 0 0; font-size: 15px; font-weight: 600; color: var(--on-navy); line-height: 1.35; }
+.bm-head .role span { color: var(--brass-soft); font-weight: 500; }
+.bm-body { padding: 24px 28px 4px; }
+.bm-body p { font-size: 16px; color: var(--ink); }
+.bio-modal form { display: block; background: none; border: 0; padding: 4px 28px 28px; margin: 0; }
+@media (max-width: 560px) { .bm-head { padding: 20px; } .bm-body { padding: 20px 20px 0; } .bio-modal form { padding: 4px 20px 20px; } .member .creds { font-size: 14px; } }
