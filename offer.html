@@ -31,34 +31,123 @@
 </header>
 
 <main id="main">
-  <section class="section offer" id="offer" aria-labelledby="offer-h">
-    <div class="wrap offer-grid">
-      <div>
-        <p class="kicker">24-hour offer application</p>
-        <h1 id="offer-h" class="as-h2" style="font-size:clamp(2.4rem,5.5vw,4rem);line-height:1.02">Get your offer within 24 hours.</h1>
-        <p class="lede" style="margin-top:16px">Fill this out and we'll send you a written offer within 24 hours.</p>
-        <ul class="assure">
-          <li>No obligation.</li>
-          <li>No repairs, no commissions.</li>
-          <li>Queens, Nassau, and Suffolk.</li>
-        </ul>
-        <p class="small" style="margin-top:16px">Offers are non-binding until a contract is signed by both parties.</p>
-      </div>
-      <form id="offer-form" novalidate>
-        <div class="field full"><label for="f-address">Property address</label><input id="f-address" name="address" autocomplete="street-address" required></div>
-        <div class="field"><label for="f-type">Property type</label>
-          <select id="f-type" name="type"><option>One-family</option><option>Two-family</option><option>Three-family or more</option><option>Vacant lot</option><option>Not sure</option></select></div>
-        <div class="field"><label for="f-condition">Condition</label>
-          <select id="f-condition" name="condition"><option>Move-in ready</option><option>Needs some work</option><option>Needs major repairs</option><option>Not livable</option></select></div>
-        <div class="field full"><label for="f-timeline">When do you want to sell?</label>
-          <select id="f-timeline" name="timeline"><option>As soon as possible</option><option>Within 3 months</option><option>3 to 6 months</option><option>Just exploring</option></select></div>
-        <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" autocomplete="name" required></div>
-        <div class="field"><label for="f-contact">Phone or email</label><input id="f-contact" name="contact" autocomplete="email" required></div>
-        <div class="field full"><label for="f-notes">Anything else? <span class="opt">(optional)</span></label><textarea id="f-notes" name="notes" placeholder="Tenants, repairs, estate, open permits..."></textarea></div>
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-        <div class="form-foot"><button class="btn btn-brass" type="submit">Submit my application</button></div>
-        <p class="status" id="form-status" role="status" aria-live="polite"></p>
-      </form>
+  <section class="page-hero">
+    <div class="wrap">
+      <p class="kicker">24-hour offer application</p>
+      <h1>Get your offer within 24 hours.</h1>
+      <p class="lede">Tell us about your property. The more you share, the more accurate your offer.</p>
+    </div>
+  </section>
+
+  <section class="section offer" id="offer" aria-label="Offer application">
+    <div class="wrap">
+    <form id="offer-form" class="app" novalidate>
+      <p class="notice"><strong>Please read:</strong> Any offer from Pooja Properties Group is non-binding and not enforceable until a written contract is signed by both parties. Offers may change after we inspect the property. We send a contract only after the inspection.</p>
+      <p class="req-note">Fields marked <span class="opt">(optional)</span> can be skipped. Everything else is required.</p>
+      <fieldset class="fs">
+        <legend><span class="num">1</span>Property address</legend>
+        <div class="grid">
+<div class="field full"><label for="p-street">Street address</label><input id="p-street" name="Street address" type="text" required autocomplete="address-line1"></div>
+<div class="field"><label for="p-unit">Unit or apartment <span class="opt">(optional)</span></label><input id="p-unit" name="Unit" type="text" autocomplete="address-line2"></div>
+<div class="field"><label for="p-city">City or town</label><input id="p-city" name="City or town" type="text" required autocomplete="address-level2"><p class="hint">For Queens, use the neighborhood (e.g., Jamaica, Astoria).</p></div>
+<div class="field"><label for="p-county">Borough or county</label><select id="p-county" name="Borough or county" required><option value="">Select one</option><option>Queens</option><option>Nassau</option><option>Suffolk</option><option>Brooklyn</option><option>Bronx</option><option>Manhattan</option><option>Staten Island</option><option>Other</option></select></div>
+<div class="field"><label for="p-zip">ZIP code</label><input id="p-zip" name="ZIP code" type="text" required inputmode="numeric" pattern="[0-9]{5}" maxlength="5" autocomplete="postal-code"></div>
+<div class="field"><label for="p-blocklot">Block and lot <span class="opt">(optional)</span></label><input id="p-blocklot" name="Block and lot" type="text"><p class="hint">Found on your tax bill or deed, if you have it.</p></div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">2</span>Property details</legend>
+        <div class="grid">
+<div class="field full" role="group"><span class="glabel">Property type</span><div class="choices" id=""><label class="choice"><input type="radio" name="Property type" value="1-family" required><span>1-family</span></label><label class="choice"><input type="radio" name="Property type" value="2-family"><span>2-family</span></label><label class="choice"><input type="radio" name="Property type" value="3- or 4-family"><span>3- or 4-family</span></label><label class="choice"><input type="radio" name="Property type" value="Multifamily (5+ units)"><span>Multifamily (5+ units)</span></label><label class="choice"><input type="radio" name="Property type" value="Mixed use"><span>Mixed use</span></label><label class="choice"><input type="radio" name="Property type" value="Condo or co-op"><span>Condo or co-op</span></label><label class="choice"><input type="radio" name="Property type" value="Vacant land"><span>Vacant land</span></label></div></div>
+<div class="field"><label for="p-beds">Total bedrooms <span class="opt">(optional)</span></label><input id="p-beds" name="Bedrooms" type="number" min="0" inputmode="numeric"></div>
+<div class="field"><label for="p-baths">Total bathrooms <span class="opt">(optional)</span></label><input id="p-baths" name="Bathrooms" type="number" min="0" step="0.5" inputmode="decimal"></div>
+<div class="field"><label for="p-sqft">Building size (sq ft) <span class="opt">(optional)</span></label><input id="p-sqft" name="Building sq ft" type="number" min="0" inputmode="numeric"></div>
+<div class="field"><label for="p-lot">Lot size <span class="opt">(optional)</span></label><input id="p-lot" name="Lot size" type="text" placeholder="e.g., 25 x 100"></div>
+<div class="field"><label for="p-year">Year built (approx.) <span class="opt">(optional)</span></label><input id="p-year" name="Year built" type="number" min="1800" max="2026" inputmode="numeric"></div>
+<div class="field"><label for="p-stories">Stories <span class="opt">(optional)</span></label><input id="p-stories" name="Stories" type="number" min="1" inputmode="numeric"></div>
+<div class="field full" role="group"><span class="glabel">Basement</span><div class="choices" id=""><label class="choice"><input type="radio" name="Basement" value="No basement" required><span>No basement</span></label><label class="choice"><input type="radio" name="Basement" value="Unfinished"><span>Unfinished</span></label><label class="choice"><input type="radio" name="Basement" value="Finished"><span>Finished</span></label><label class="choice"><input type="radio" name="Basement" value="Finished with separate entrance"><span>Finished with separate entrance</span></label></div></div>
+<div class="field full" role="group"><span class="glabel">Parking <span class="opt">(optional)</span></span><div class="choices"><label class="choice"><input type="checkbox" name="Parking" value="Driveway"><span>Driveway</span></label><label class="choice"><input type="checkbox" name="Parking" value="Garage"><span>Garage</span></label><label class="choice"><input type="checkbox" name="Parking" value="Street only"><span>Street only</span></label></div></div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">3</span>Occupancy</legend>
+        <div class="grid">
+<div class="field full" role="group"><span class="glabel">How will the property be delivered?</span><div class="choices" id="g-delivered"><label class="choice"><input type="radio" name="Delivered" value="Vacant" required><span>Vacant</span></label><label class="choice"><input type="radio" name="Delivered" value="With tenants"><span>With tenants</span></label><label class="choice"><input type="radio" name="Delivered" value="Owner-occupied (I will move out)"><span>Owner-occupied (I will move out)</span></label></div></div>
+<div class="field full cond" data-show="Delivered=With tenants">
+  <div class="grid">
+   <div class="field"><label for="t-units">Units with tenants</label><input id="t-units" name="Occupied units" type="number" min="1" inputmode="numeric"></div>
+   <div class="field"><label for="t-rent">Total monthly rent ($)</label><input id="t-rent" name="Total monthly rent" type="number" min="0" inputmode="numeric"></div>
+   <div class="field"><label for="t-lease">Lease type</label><select id="t-lease" name="Lease type"><option value="">Select one</option><option>Written leases</option><option>Month to month</option><option>Mix</option><option>No lease / not paying</option></select></div>
+   <div class="field full" role="group"><span class="glabel">Any rent-stabilized units? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Rent-stabilized" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Rent-stabilized" value="No"><span>No</span></label><label class="choice"><input type="radio" name="Rent-stabilized" value="Not sure"><span>Not sure</span></label></div></div>
+   <div class="field full" role="group"><span class="glabel">Are tenants current on rent? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Tenants current on rent" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Tenants current on rent" value="No"><span>No</span></label><label class="choice"><input type="radio" name="Tenants current on rent" value="Not sure"><span>Not sure</span></label></div></div>
+  </div>
+ </div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">4</span>Condition</legend>
+        <div class="grid">
+<div class="field full"><label for="c-overall">Overall condition</label><select id="c-overall" name="Overall condition" required><option value="">Select one</option><option>Move-in ready</option><option>Needs some updates</option><option>Needs major repairs</option><option>Not livable / gut renovation</option></select></div>
+<div class="field full" role="group"><span class="glabel">Known issues (check all that apply) <span class="opt">(optional)</span></span><div class="choices"><label class="choice"><input type="checkbox" name="Known issues" value="Roof"><span>Roof</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Foundation or structural"><span>Foundation or structural</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Plumbing"><span>Plumbing</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Electrical"><span>Electrical</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Heating or boiler"><span>Heating or boiler</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Water damage or mold"><span>Water damage or mold</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Fire damage"><span>Fire damage</span></label><label class="choice"><input type="checkbox" name="Known issues" value="Pests"><span>Pests</span></label><label class="choice"><input type="checkbox" name="Known issues" value="None that I know of"><span>None that I know of</span></label></div></div>
+<div class="field" role="group"><span class="glabel">Open DOB violations or permits? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Open DOB violations or permits" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Open DOB violations or permits" value="No"><span>No</span></label><label class="choice"><input type="radio" name="Open DOB violations or permits" value="Not sure"><span>Not sure</span></label></div></div>
+<div class="field" role="group"><span class="glabel">HPD or ECB violations? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="HPD or ECB violations" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="HPD or ECB violations" value="No"><span>No</span></label><label class="choice"><input type="radio" name="HPD or ECB violations" value="Not sure"><span>Not sure</span></label></div></div>
+<div class="field" role="group"><span class="glabel">Liens, judgments, or unpaid taxes? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Liens or unpaid taxes" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Liens or unpaid taxes" value="No"><span>No</span></label><label class="choice"><input type="radio" name="Liens or unpaid taxes" value="Not sure"><span>Not sure</span></label></div></div>
+<div class="field" role="group"><span class="glabel">Any illegal or unpermitted units? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Unpermitted units" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Unpermitted units" value="No"><span>No</span></label><label class="choice"><input type="radio" name="Unpermitted units" value="Not sure"><span>Not sure</span></label></div></div>
+<div class="field full"><label for="c-updates">Recent updates or renovations <span class="opt">(optional)</span></label><textarea id="c-updates" name="Recent updates" placeholder="e.g., new roof 2022, updated kitchen"></textarea></div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">5</span>Ownership and sale</legend>
+        <div class="grid">
+<div class="field full" role="group"><span class="glabel">Who is filling this out?</span><div class="choices" id="g-rel"><label class="choice"><input type="radio" name="Relationship to property" value="Owner" required><span>Owner</span></label><label class="choice"><input type="radio" name="Relationship to property" value="Co-owner"><span>Co-owner</span></label><label class="choice"><input type="radio" name="Relationship to property" value="Executor or administrator of an estate"><span>Executor or administrator of an estate</span></label><label class="choice"><input type="radio" name="Relationship to property" value="Agent or attorney for the owner"><span>Agent or attorney for the owner</span></label><label class="choice"><input type="radio" name="Relationship to property" value="Other"><span>Other</span></label></div></div>
+<div class="field" role="group"><span class="glabel">Do all owners agree to sell? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="All owners agree" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="All owners agree" value="No"><span>No</span></label><label class="choice"><input type="radio" name="All owners agree" value="Not sure"><span>Not sure</span></label></div></div>
+<div class="field" role="group"><span class="glabel">Is the property currently listed with a real estate agent? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Listed with an agent" value="Yes"><span>Yes</span></label><label class="choice"><input type="radio" name="Listed with an agent" value="No"><span>No</span></label></div></div>
+<div class="field full cond" data-show="Relationship to property=Executor or administrator of an estate">
+  <div class="field full" role="group"><span class="glabel">Has the estate been through probate (Letters issued)? <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Probate status" value="Yes, Letters issued"><span>Yes, Letters issued</span></label><label class="choice"><input type="radio" name="Probate status" value="In process"><span>In process</span></label><label class="choice"><input type="radio" name="Probate status" value="Not started"><span>Not started</span></label><label class="choice"><input type="radio" name="Probate status" value="Not sure"><span>Not sure</span></label></div></div>
+ </div>
+<div class="field full" role="group"><span class="glabel">Mortgage status <span class="opt">(optional)</span></span><div class="choices" id=""><label class="choice"><input type="radio" name="Mortgage status" value="Owned free and clear"><span>Owned free and clear</span></label><label class="choice"><input type="radio" name="Mortgage status" value="Mortgage, payments current"><span>Mortgage, payments current</span></label><label class="choice"><input type="radio" name="Mortgage status" value="Behind on payments"><span>Behind on payments</span></label><label class="choice"><input type="radio" name="Mortgage status" value="In foreclosure"><span>In foreclosure</span></label><label class="choice"><input type="radio" name="Mortgage status" value="Prefer not to say"><span>Prefer not to say</span></label></div></div>
+<div class="field"><label for="s-timeline">When do you want to sell?</label><select id="s-timeline" name="Timeline" required><option value="">Select one</option><option>As soon as possible</option><option>Within 30 days</option><option>1 to 3 months</option><option>3 to 6 months</option><option>Just exploring</option></select></div>
+<div class="field"><label for="s-price">Price you have in mind ($) <span class="opt">(optional)</span></label><input id="s-price" name="Asking price" type="number" min="0" inputmode="numeric"></div>
+<div class="field"><label for="s-reason">Reason for selling <span class="opt">(optional)</span></label><select id="s-reason" name="Reason for selling"><option value="">Select one</option><option>Repairs are too costly</option><option>Inherited property</option><option>Tenant issues</option><option>Divorce</option><option>Relocating</option><option>Downsizing</option><option>Financial reasons</option><option>Other</option></select></div>
+<div class="field"><label for="s-access">Best days and times for a walkthrough <span class="opt">(optional)</span></label><input id="s-access" name="Walkthrough availability" type="text" placeholder="e.g., weekday evenings, Saturday mornings"></div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">6</span>Photos</legend>
+        <div class="grid">
+<div class="field full" id="photo-field">
+  <label for="ph-files">Upload photos <span class="opt">(up to 10)</span></label>
+  <input id="ph-files" name="Photos" type="file" accept="image/*" multiple>
+  <p class="hint">Front and back of the house, kitchen, bathrooms, basement, boiler, and any damage. Phone photos are fine.</p>
+  <p class="hint" id="ph-count" aria-live="polite"></p>
+ </div>
+ <div class="field full" id="photo-email" hidden>
+  <p class="photo-note">Email your photos to <a href="mailto:payshel@poojapropertiesgroup.com">payshel@poojapropertiesgroup.com</a> with the property address in the subject line. Front and back of the house, kitchen, bathrooms, basement, boiler, and any damage. Phone photos are fine.</p>
+ </div>
+        </div>
+      </fieldset>
+      <fieldset class="fs">
+        <legend><span class="num">7</span>Your contact information</legend>
+        <div class="grid">
+<div class="field"><label for="k-first">First name</label><input id="k-first" name="First name" type="text" required autocomplete="given-name"></div>
+<div class="field"><label for="k-last">Last name</label><input id="k-last" name="Last name" type="text" required autocomplete="family-name"></div>
+<div class="field"><label for="k-phone">Phone</label><input id="k-phone" name="Phone" type="tel" required autocomplete="tel" inputmode="tel"></div>
+<div class="field"><label for="k-email">Email</label><input id="k-email" name="Email" type="email" required autocomplete="email"></div>
+<div class="field full" role="group"><span class="glabel">Best way to reach you</span><div class="choices" id=""><label class="choice"><input type="radio" name="Preferred contact" value="Call" required><span>Call</span></label><label class="choice"><input type="radio" name="Preferred contact" value="Text"><span>Text</span></label><label class="choice"><input type="radio" name="Preferred contact" value="Email"><span>Email</span></label></div></div>
+<div class="field"><label for="k-time">Best time to reach you <span class="opt">(optional)</span></label><select id="k-time" name="Best time to reach"><option value="">Select one</option><option>Morning</option><option>Afternoon</option><option>Evening</option><option>Anytime</option></select></div>
+<div class="field"><label for="k-heard">How did you hear about us? <span class="opt">(optional)</span></label><select id="k-heard" name="Heard about us"><option value="">Select one</option><option>Google search</option><option>Social media</option><option>Referral</option><option>Mail or flyer</option><option>Sign</option><option>Other</option></select></div>
+<div class="field full"><label for="k-notes">Anything else we should know? <span class="opt">(optional)</span></label><textarea id="k-notes" name="Notes"></textarea></div>
+        </div>
+      </fieldset>
+      <fieldset class="fs agree" aria-label="Acknowledgment">
+        <p class="notice"><strong>Please read:</strong> Any offer from Pooja Properties Group is non-binding and not enforceable until a written contract is signed by both parties. Offers may change after we inspect the property. We send a contract only after the inspection.</p>
+        <label class="choice ack"><input type="checkbox" name="Acknowledged" value="Yes" required data-label="Acknowledgment checkbox"><span>I understand that any offer is non-binding until a written contract is signed by both parties, may change after inspection, and that a contract is sent only after inspection. I agree that Pooja Properties Group may contact me by phone, text, or email about this property.</span></label>
+        <p class="small disclose-line">Payshel Sharma is a licensed NY real estate salesperson. When PPG buys a property, he acts as a principal buying for his own company, not as the seller&rsquo;s agent.</p>
+      </fieldset>
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+      <div class="form-foot"><button class="btn btn-brass btn-submit" type="submit">Submit my application</button></div>
+      <p class="status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
     </div>
   </section>
 </main>

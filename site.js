@@ -15,47 +15,90 @@
     try { navigator.clipboard.writeText(ADDRESS).then(function () { cs.textContent = 'Copied.'; }, fallback); } catch (e) { fallback(); }
   });
 
-  // Property form
+  // Offer application
   var form = document.getElementById('offer-form'), st = document.getElementById('form-status');
-  if (form) form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    st.className = 'status';
-    var missing = [];
-    ['f-address', 'f-name', 'f-contact'].forEach(function (id) {
-      var el = document.getElementById(id);
-      var bad = !el.value.trim();
-      el.setAttribute('aria-invalid', bad ? 'true' : 'false');
-      if (bad) missing.push(el.labels[0].textContent.replace(/\s*\(optional\)/, ''));
+  if (form) {
+    // Photos upload only works through a form service; otherwise ask for photos by email.
+    var pf = document.getElementById('photo-field'), pe = document.getElementById('photo-email');
+    if (pf && pe && !FORM_ENDPOINT) { pf.hidden = true; pf.querySelector('input').disabled = true; pe.hidden = false; }
+    var files = document.getElementById('ph-files'), cnt = document.getElementById('ph-count');
+    if (files) files.addEventListener('change', function () {
+      var n = files.files.length, big = 0;
+      for (var i = 0; i < n; i++) if (files.files[i].size > 25 * 1024 * 1024) big++;
+      cnt.textContent = n > 10 ? 'Please choose 10 photos or fewer.' : big ? 'Each photo must be under 25 MB.' : n ? n + ' photo' + (n > 1 ? 's' : '') + ' selected.' : '';
     });
-    if (missing.length) {
-      st.className = 'status err';
-      st.textContent = 'Please fill in: ' + missing.join(', ') + '.';
-      document.getElementById(['f-address','f-name','f-contact'].filter(function(id){return !document.getElementById(id).value.trim();})[0]).focus();
-      return;
+
+    // Show follow-up questions only when they apply
+    var conds = form.querySelectorAll('.cond[data-show]');
+    function syncConds() {
+      Array.prototype.forEach.call(conds, function (c) {
+        var parts = c.getAttribute('data-show').split('='), on = false;
+        Array.prototype.forEach.call(form.querySelectorAll('[name="' + parts[0] + '"]'), function (i) { if (i.checked && i.value === parts[1]) on = true; });
+        c.hidden = !on;
+        Array.prototype.forEach.call(c.querySelectorAll('input, select, textarea'), function (i) { i.disabled = !on; });
+      });
     }
-    var d = new FormData(form);
-    if (d.get('_gotcha')) return;
-    if (FORM_ENDPOINT) {
-      st.textContent = 'Sending...';
-      fetch(FORM_ENDPOINT, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
-        .then(function (r) {
-          if (!r.ok) throw new Error();
-          form.reset();
-          st.textContent = 'Application received. You\'ll get your offer within 24 hours.';
-        })
-        .catch(function () {
-          st.className = 'status err';
-          st.textContent = 'That didn\'t go through. Please email ' + ADDRESS + ' instead.';
+    form.addEventListener('change', syncConds); syncConds();
+
+    function label(el) {
+      if (el.dataset && el.dataset.label) return el.dataset.label;
+      var g = el.closest('[role="group"]');
+      if (g) return g.querySelector('.glabel').childNodes[0].textContent.trim();
+      if (el.labels && el.labels[0]) return el.labels[0].childNodes[0].textContent.trim();
+      return el.name;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      st.className = 'status';
+      Array.prototype.forEach.call(form.querySelectorAll('[aria-invalid], .choices.invalid'), function (x) { x.removeAttribute('aria-invalid'); x.classList.remove('invalid'); });
+      var bad = [], seen = {};
+      Array.prototype.forEach.call(form.querySelectorAll('[required]'), function (el) {
+        if (el.disabled || el.closest('[hidden]')) return;
+        var ok;
+        if (el.type === 'radio') {
+          if (seen[el.name]) return; seen[el.name] = 1;
+          ok = !!form.querySelector('[name="' + el.name + '"]:checked');
+          if (!ok) el.closest('.choices').classList.add('invalid');
+        } else if (el.type === 'checkbox') { ok = el.checked; }
+        else { ok = el.value.trim() !== '' && el.checkValidity(); if (!ok) el.setAttribute('aria-invalid', 'true'); }
+        if (!ok) bad.push(el);
+      });
+      if (files && files.files.length > 10) bad.push(files);
+      if (bad.length) {
+        st.className = 'status err';
+        st.textContent = 'Please complete: ' + bad.map(label).join(', ') + '.';
+        bad[0].focus();
+        return;
+      }
+      var d = new FormData(form);
+      if (d.get('_gotcha')) return;
+      var addr = [d.get('Street address'), d.get('Unit'), d.get('City or town'), d.get('ZIP code')].filter(Boolean).join(', ');
+      if (FORM_ENDPOINT) {
+        d.append('_subject', 'Offer application: ' + addr);
+        st.textContent = 'Sending...';
+        fetch(FORM_ENDPOINT, { method: 'POST', body: d, headers: { Accept: 'application/json' } })
+          .then(function (r) {
+            if (!r.ok) throw new Error();
+            form.reset(); syncConds(); if (cnt) cnt.textContent = '';
+            st.textContent = 'Application received. You\'ll get your offer within 24 hours.';
+          })
+          .catch(function () {
+            st.className = 'status err';
+            st.textContent = 'That didn\'t go through. Please try again or email ' + ADDRESS + '.';
+          });
+      } else {
+        var lines = [], last = '';
+        d.forEach(function (v, k) {
+          if (k === '_gotcha' || typeof v !== 'string' || !v) return;
+          if (k === last) { lines[lines.length - 1] += ', ' + v; return; }
+          lines.push(k + ': ' + v); last = k;
         });
-    } else {
-      var body = 'Property address: ' + d.get('address') + '\nProperty type: ' + d.get('type') +
-        '\nCondition: ' + d.get('condition') + '\nTimeline: ' + d.get('timeline') +
-        '\nName: ' + d.get('name') + '\nPhone or email: ' + d.get('contact') +
-        '\n\nNotes:\n' + (d.get('notes') || '');
-      window.location.href = 'mailto:' + ADDRESS + '?subject=' + encodeURIComponent('Property details: ' + d.get('address')) + '&body=' + encodeURIComponent(body);
-      st.textContent = 'Your email app should open with the details filled in. Press send to finish.';
-    }
-  });
+        window.location.href = 'mailto:' + ADDRESS + '?subject=' + encodeURIComponent('Offer application: ' + addr) + '&body=' + encodeURIComponent(lines.join('\n') + '\n\n(Attach your property photos to this email.)');
+        st.textContent = 'Your email app should open with your answers filled in. Attach your photos and press send to finish.';
+      }
+    });
+  }
 
   // Hide the pinned mobile button while the form is on screen
   var pin = document.getElementById('pin');
@@ -71,8 +114,8 @@
   // Prefill address from the home page
   try {
     var a = new URLSearchParams(location.search).get('address');
-    var fa = document.getElementById('f-address');
-    if (a && fa) { fa.value = a; var nx = document.getElementById('f-type'); if (nx) nx.focus(); }
+    var fa = document.getElementById('p-street');
+    if (a && fa) { fa.value = a; var nx = document.getElementById('p-unit'); if (nx) nx.focus(); }
   } catch (e) {}
 
   // Team "Learn more" dialogs
