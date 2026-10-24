@@ -283,3 +283,34 @@ h1.as-h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.12; }
 
 .note-24 { margin-top: 22px; max-width: 46ch; font-size: 16px; color: var(--on-navy); border-left: 2px solid var(--brass); padding-left: 14px; }
 .note-24 b { color: var(--brass-soft); font-weight: 600; }
+
+/* Team roster */
+.roster { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.member { background: #fff; border: 1px solid var(--rule); display: flex; flex-direction: column; }
+.member .mphoto { aspect-ratio: 4 / 5; background: var(--navy); overflow: hidden; border-bottom: 3px solid var(--brass); display: grid; place-items: center; }
+.member .mphoto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.member .mphoto.initials span { font-family: var(--serif); font-size: 3rem; color: var(--brass-soft); }
+.member .mtext { padding: 20px 22px 24px; }
+.member h2 { font-size: 1.3rem; line-height: 1.2; }
+.member .role { font-size: 15px; font-weight: 600; color: var(--navy); margin: 8px 0 0; line-height: 1.35; }
+.member .role span { font-weight: 500; color: var(--brass); }
+.member .bio { font-size: 15px; color: var(--muted); margin: 12px 0 0; }
+.member .bio:empty { display: none; }
+.member.lead { grid-column: 1 / -1; flex-direction: row; }
+.member.lead .mphoto { width: min(320px, 40%); flex: none; border-bottom: 0; border-right: 3px solid var(--brass); }
+.member.lead .mtext { padding: clamp(24px, 4vw, 48px); align-self: center; }
+.member.lead h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
+.member.lead .role { font-size: 17px; }
+.roster .open-slot { grid-column: span 4; flex-direction: row; align-items: center; }
+@media (max-width: 1000px) { .roster { grid-template-columns: repeat(2, 1fr); } .roster .open-slot { grid-column: span 2; } }
+@media (max-width: 560px) {
+  .roster { grid-template-columns: 1fr; } .roster .open-slot { grid-column: auto; flex-direction: column; align-items: flex-start; }
+  .member { flex-direction: row; }
+  .member .mphoto { width: 112px; flex: none; align-self: stretch; aspect-ratio: auto; min-height: 112px; border-bottom: 0; border-right: 3px solid var(--brass); }
+  .member .mphoto.initials span { font-size: 2rem; }
+  .member .mtext { padding: 16px 18px; align-self: center; }
+  .member.lead .mphoto { width: 132px; }
+  .member.lead .mtext { padding: 18px; }
+  .member.lead h2 { font-size: 1.5rem; }
+  .member.lead .role { font-size: 15px; }
+}
