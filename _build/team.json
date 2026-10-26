@@ -1,0 +1,103 @@
+{
+  "president": {
+    "long": [
+      "Payshel founded Pooja Properties Group and leads its development and property management. He studies Real Estate at the NYU Schack Institute of Real Estate and Economics at NYU.",
+      "A licensed New York real estate salesperson, he has worked listings, open houses, and comparative market analyses for buyers and sellers across Queens and Long Island. He specializes in converting one-family homes into legal two-family homes."
+    ],
+    "name": "Payshel Sharma",
+    "creds": [
+      "BS in Real Estate",
+      "BA in Economics",
+      "New York University"
+    ],
+    "slug": "payshel-sharma",
+    "title": "President",
+    "subtitle": "Lead, Development and Property Management"
+  },
+  "divisions": [
+    {
+      "name": "Hard Money and Financing Relations",
+      "members": [
+        {
+          "long": [
+            "Aaryan leads PPG&rsquo;s lender and financing relationships. He studies Finance at American University&rsquo;s Kogod School of Business, where he is Philanthropy Chairman of Phi Sigma Kappa.",
+            "He is a licensed New York real estate salesperson with eXp Realty, working with buyers, sellers, and investors on residential, multifamily, and investment properties. He completed Eastdil Secured Savills&rsquo; Real Estate Finance Training Program and is a finance intern at Compliers Consulting Services. He previously supported startup analysis and due diligence as a Startup and Venture Capital Intern at Startup Grind, and worked as a Tax and Financial Planning Intern at Focus Partners Wealth."
+          ],
+          "name": "Aaryan Sharma",
+          "creds": [
+            "BS Finance",
+            "American University"
+          ],
+          "slug": "aaryan-sharma",
+          "title": "Executive Director"
+        }
+      ]
+    },
+    {
+      "name": "Evaluations",
+      "members": [
+        {
+          "long": [
+            "Aryan leads PPG&rsquo;s property evaluations. He studies Real Estate Finance with a minor in Economics at the NYU Schack Institute of Real Estate and is a member of the Stern Real Estate Group.",
+            "At Battery Alexander Realty Capital he worked as a Development and Real Estate Investments Analyst in Philadelphia, after an earlier rotational internship in real estate development supporting contractor and investor relations. He underwrote three multifamily deals in Project Destined&rsquo;s real estate private equity program and was a Private Equity Intern at Green Sands Equity."
+          ],
+          "name": "Aryan Reddy",
+          "creds": [
+            "BS Real Estate Finance, Minor in Economics",
+            "NYU Schack Institute of Real Estate"
+          ],
+          "slug": "aryan-reddy",
+          "title": "Executive Director"
+        },
+        {
+          "long": [
+            "Caleb is an Acquisitions Analyst on PPG&rsquo;s Evaluations team, helping find and analyze properties in Queens and Long Island. He studies Data Science at New York University&rsquo;s College of Arts and Science, where he works on events and community for Tech@NYU.",
+            "He co-founded and co-owns Prepwise Test Prep, and was a Sales and Marketing Intern at Intelligent Office. He also spent more than five years at Pokeworks, rising to Shift Lead."
+          ],
+          "name": "Caleb Lo",
+          "creds": [
+            "BA Data Science",
+            "NYU College of Arts and Science"
+          ],
+          "slug": "caleb-lo",
+          "title": "Acquisitions Analyst"
+        }
+      ]
+    },
+    {
+      "name": "DOB Relations and Expediting",
+      "members": [
+        {
+          "long": [
+            "Andrew leads PPG&rsquo;s permits, filings, and coordination with the NYC Department of Buildings. He studies Accounting at SUNY Old Westbury."
+          ],
+          "name": "Andrew Reji",
+          "creds": [
+            "BS Accounting",
+            "SUNY Old Westbury"
+          ],
+          "slug": "andrew-reji",
+          "title": "Executive Director"
+        }
+      ]
+    },
+    {
+      "name": "Human Resources",
+      "members": [
+        {
+          "long": [
+            "Natasha leads PPG&rsquo;s people and team operations. She is in NYIT&rsquo;s seven-year BS/DO program with a 4.0 GPA, and has interned at Memorial Sloan Kettering in New York City and Commack.",
+            "Her independent research on how microplastics affect algal consumption earned the LISC Best in Category and State Nominee Research Award, LISC Highest Honors, the STANYS High Honors Research Award, and an Association of Women Geoscientists Award. She shadowed ICU physicians at St. Catherine of Siena Hospital, volunteers with New York Cares on voter awareness and food drives, and is leading an NYIT initiative to get students free OMNY cards for their commute."
+          ],
+          "name": "Natasha Mishra",
+          "creds": [
+            "BS/DO",
+            "NYIT College of Osteopathic Medicine"
+          ],
+          "slug": "natasha-mishra",
+          "title": "Executive Director"
+        }
+      ]
+    }
+  ]
+}
