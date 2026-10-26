@@ -1,5 +1,5 @@
 (function () {
-  var ADDRESS = 'payshel@poojapropertiesgroup.com';
+  var ADDRESS = 'payshelsharma@poojapropertiesgroup.com';
   // Paste a Formspree endpoint here (e.g. https://formspree.io/f/abcdwxyz) to receive submissions by email.
   // Until then, the form opens the visitor's email app with the details filled in.
   var FORM_ENDPOINT = '';
