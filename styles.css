@@ -301,8 +301,8 @@ h1.as-h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.12; }
 .member.lead .mtext { padding: clamp(24px, 4vw, 48px); align-self: center; }
 .member.lead h2 { font-size: clamp(1.8rem, 3.5vw, 2.6rem); }
 .member.lead .role { font-size: 17px; }
-.roster .open-slot { grid-column: span 4; flex-direction: row; align-items: center; }
-@media (max-width: 1000px) { .roster { grid-template-columns: repeat(2, 1fr); } .roster .open-slot { grid-column: span 2; } }
+.roster .open-slot { grid-column: span 3; flex-direction: column; justify-content: center; }
+@media (max-width: 1000px) { .roster { grid-template-columns: repeat(2, 1fr); } .roster .open-slot { grid-column: span 1; } }
 @media (max-width: 560px) {
   .roster { grid-template-columns: 1fr; } .roster .open-slot { grid-column: auto; flex-direction: column; align-items: flex-start; }
   .member { flex-direction: row; }
